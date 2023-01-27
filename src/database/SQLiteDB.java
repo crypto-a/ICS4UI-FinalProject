@@ -1,3 +1,12 @@
+/*****************************************
+ /*Program Name: SQLiteDB
+ /*Programmer Name: Ali Rahbar
+ /*Program Date: January 26, 2023
+ /*Program Description: This program connects to the database
+ /*Inputs: None
+ /*Outputs: None
+ ******************************************/
+
 package database;
 
 import java.sql.*;
@@ -9,7 +18,14 @@ public class SQLiteDB {
     private Connection connection;
     private Statement statement;
 
-    // Constructor method to connect to the database
+    /*****************************************
+     /*Method Name: SQLiteDB
+     /*Programmer Name: Ali Rahbar
+     /*Method Date: January 26, 2023
+     /*Method Description: This method constructs the object
+     /*Method Inputs: databaseName
+     /*Method Outputs: None
+     ******************************************/
     public SQLiteDB(String databaseName) {
 
 
@@ -33,7 +49,14 @@ public class SQLiteDB {
         }
     }
 
-    // Method to pull data from a specific table and save it as a 2D array
+    /*****************************************
+     /*Method Name: getDataFromTable
+     /*Programmer Name: Ali Rahbar
+     /*Method Date: January 26, 2023
+     /*Method Description: This method returns the table values as a 2dArray array
+     /*Method Inputs: tableName
+     /*Method Outputs: data
+     ******************************************/
     public String[][] getDataFromTable(String tableName)
     {
         //Try
@@ -98,6 +121,14 @@ public class SQLiteDB {
         }
     }
 
+    /*****************************************
+     /*Method Name: writeToTable
+     /*Programmer Name: Ali Rahbar
+     /*Method Date: January 26, 2023
+     /*Method Description: This method writes the given 2dArray to the table and saves it
+     /*Method Inputs: tableName, data
+     /*Method Outputs: None
+     ******************************************/
     public void writeToTable (String tableName, String[][] data)
     {
 
@@ -139,6 +170,14 @@ public class SQLiteDB {
         }
     }
 
+    /*****************************************
+     /*Method Name: Run
+     /*Programmer Name: Ali Rahbar
+     /*Method Date: January 26, 2023
+     /*Method Description: This method closes the database connection
+     /*Method Inputs: None
+     /*Method Outputs: None
+     ******************************************/
     public void closeDB()
     {
         try
