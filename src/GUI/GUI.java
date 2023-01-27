@@ -6,19 +6,19 @@
  /*Inputs: Event object, Animal object, ObjectManager object
  /*Outputs: None
  ******************************************/
-package src.GUI;
+package GUI;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-import src.GUI.AddAnimalPage.AddAnimalPage;
-import src.GUI.EditAnimalPage.EditAnimalPage;
-import src.GUI.Event.Event;
-import src.GUI.MainPage.MainPage;
-import src.Objects.Base.Animal;
-import src.Objects.ObjectManager;
+import GUI.AddAnimalPage.AddAnimalPage;
+import GUI.EditAnimalPage.EditAnimalPage;
+import GUI.Event.Event;
+import GUI.MainPage.MainPage;
+import Objects.Base.Animal;
+import Objects.ObjectManager;
 
 public class GUI extends JFrame
 {

@@ -1,4 +1,4 @@
-package src; /*****************************************
+/*****************************************
  /*Program Name: main
  /*Programmer Name: Ali Rahbar
  /*Program Date: January 20, 2023
@@ -6,7 +6,7 @@ package src; /*****************************************
  /*Inputs: Run
  /*Outputs: None
  ******************************************/
-import src.Runner.Run;
+import Runner.Run;
 
 
 public class Main

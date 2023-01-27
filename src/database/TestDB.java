@@ -1,4 +1,4 @@
-package src.database;
+package database;
 
 public class TestDB
 {

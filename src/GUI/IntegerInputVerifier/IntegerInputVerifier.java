@@ -6,7 +6,7 @@
  /*Inputs: None
  /*Outputs: None
  ******************************************/
-package src.GUI.IntegerInputVerifier;
+package GUI.IntegerInputVerifier;
 
 
 import javax.swing.*;

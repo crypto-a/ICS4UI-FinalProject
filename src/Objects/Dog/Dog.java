@@ -7,9 +7,9 @@
  /*Outputs: None
  ******************************************/
 
-package src.Objects.Dog;
+package Objects.Dog;
 
-import src.Objects.Base.Animal;
+import Objects.Base.Animal;
 
 
 

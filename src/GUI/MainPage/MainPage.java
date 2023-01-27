@@ -6,11 +6,11 @@
  /*Inputs: Event object, Animal object, ObjectManager object
  /*Outputs: None
  ******************************************/
-package src.GUI.MainPage;
+package GUI.MainPage;
 
-import src.GUI.Event.Event;
-import src.Objects.Base.Animal;
-import src.Objects.ObjectManager;
+import GUI.Event.Event;
+import Objects.Base.Animal;
+import Objects.ObjectManager;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;

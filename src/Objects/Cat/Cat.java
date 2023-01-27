@@ -7,9 +7,9 @@
  /*Outputs: None
  ******************************************/
 
-package src.Objects.Cat;
+package Objects.Cat;
 
-import src.Objects.Base.Animal;
+import Objects.Base.Animal;
 
 public class Cat extends Animal
 {

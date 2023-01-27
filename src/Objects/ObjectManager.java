@@ -7,14 +7,14 @@
  /*Outputs: None
  ******************************************/
 
-package src.Objects;
+package Objects;
 
 //Import required classes
-import src.GUI.Event.Event;
-import src.Objects.Dog.Dog;
-import src.Objects.Cat.Cat;
-import src.Objects.Fish.Fish;
-import src.Objects.Base.Animal;
+import GUI.Event.Event;
+import Objects.Dog.Dog;
+import Objects.Cat.Cat;
+import Objects.Fish.Fish;
+import Objects.Base.Animal;
 import java.util.*;
 
 public class ObjectManager

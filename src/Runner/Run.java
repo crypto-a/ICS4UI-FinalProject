@@ -7,11 +7,11 @@
  /*Outputs: None
  ******************************************/
 
-package src.Runner;
+package Runner;
 
-import src.Objects.ObjectManager;
-import src.GUI.GUI;
-import src.GUI.Event.Event;
+import Objects.ObjectManager;
+import GUI.GUI;
+import GUI.Event.Event;
 
 import javax.swing.*;
 

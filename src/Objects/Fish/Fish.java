@@ -7,9 +7,9 @@
  /*Outputs: None
  ******************************************/
 
-package src.Objects.Fish;
+package Objects.Fish;
 
-import src.Objects.Base.Animal;
+import Objects.Base.Animal;
 
 public class Fish extends Animal
 {

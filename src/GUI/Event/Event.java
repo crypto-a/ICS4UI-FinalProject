@@ -6,7 +6,7 @@
  /*Inputs: Event
  /*Outputs: None
  ******************************************/
-package src.GUI.Event;
+package GUI.Event;
 
 
 public class Event

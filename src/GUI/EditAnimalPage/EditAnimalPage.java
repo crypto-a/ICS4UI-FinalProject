@@ -6,11 +6,11 @@
  /*Inputs: Event object
  /*Outputs: None
  ******************************************/
-package src.GUI.EditAnimalPage;
+package GUI.EditAnimalPage;
 
-import src.GUI.Event.Event;
-import src.GUI.IntegerInputVerifier.IntegerInputVerifier;
-import src.Objects.Base.Animal;
+import GUI.Event.Event;
+import GUI.IntegerInputVerifier.IntegerInputVerifier;
+import Objects.Base.Animal;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
