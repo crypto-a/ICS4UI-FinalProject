@@ -193,6 +193,14 @@ public class GUI extends JFrame
         this.event.endEvent();
     }
 
+    /*****************************************
+     /*Method Name: closeMainProgram
+     /*Programmer Name: Ali Rahbar
+     /*Method Date: January 28, 2023
+     /*Method Description: This method terminates the page
+     /*Method Inputs: None
+     /*Method Outputs: None
+     ******************************************/
     private void closeMainProgram()
     {
         //Save data to the database

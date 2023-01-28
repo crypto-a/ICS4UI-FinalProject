@@ -18,6 +18,7 @@
 | updateEditPage  | objectManager           | None        | updates the content on the editAnimal page                   |
 | terminate       | None                    | None        | Closes the GUI object                                        |
 | cancelPage      | None                    | None        | This method ends the event status                            |
+| closeMainPage   | None                    | None        | This method closes the program and ends the code             |
 
 ### PseudoCode:
 
@@ -81,6 +82,15 @@ In the GUI class
     In the terminate method
     {
         Dispose the page
+    }
+    
+    In the cancelMainPage method
+    {
+        Save the data to db
+        
+        terminate page
+        
+        end program
     }
 }
 ```
