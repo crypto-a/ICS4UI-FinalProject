@@ -10,16 +10,18 @@
 ### IPO Chart:
 
 
-| **Method Name**   | **Inputs**                         | **Outputs**      | **Processes**                                                    |
-|-------------------|------------------------------------|------------------|------------------------------------------------------------------|
-| ObjectManager     | None                               | None             | Creates an animal object for the cat and gives it its properties |
-| pullData          | None                               | ArrayList Animal |                                                                  |
-| sortByAge         | None                               | None             |                                                                  |
-| sortByName        | None                               | None             |                                                                  |
-| setSelectedAnimal | newIndex                           | None             |                                                                  |
-| addAnimal         | name, age, type, color             | None             |                                                                  |
-| editAnimal        | name, age, type, color, editAnimal | None             |                                                                  |
-| deleteAnimal      | deleteAnimal                       | None             |                                                                  |
+| **Method Name**   | **Inputs**                         | **Outputs**      | **Processes**                                                        |
+|-------------------|------------------------------------|------------------|----------------------------------------------------------------------|
+| ObjectManager     | None                               | None             | Creates an animal object for the cat and gives it its properties     |
+| pullData          | None                               | ArrayList Animal | Converts the active arraylist to non typed array list and returns it |
+| sortByAge         | None                               | None             | Sorts the active array by age                                        |
+| sortByName        | None                               | None             | Sorts the active array by name                                       |
+| setSelectedAnimal | newIndex                           | None             | This method changes the active animal                                |
+| addAnimal         | name, age, type, color             | None             | Crates a new class of said animal and adds it to the arraylist       |
+| editAnimal        | name, age, type, color, editAnimal | None             | Change the properties of and animal                                  |
+| deleteAnimal      | deleteAnimal                       | None             | delete the animal object                                             |
+| loadData          | None                               | None             | Pull the data from the database                                      |
+| saveData          | None                               | None             | Push the data to the database                                        |
 
 ### PseudoCode:
 
@@ -50,12 +52,12 @@ Create an ObjectManager object
     
     In the sortByAge method
     {
-        Using the methods in the animal object, sort the actibe arraylist by age
+        Using the methods in the animal object, sort the active arraylist by age
     }
     
     In ths sortByName method
     {
-        Using the methods in the animal object, sort the actibe arraylist by Name
+        Using the methods in the animal object, sort the active arraylist by Name
     }
     
     In the setSelectedAnimal method
@@ -79,6 +81,16 @@ Create an ObjectManager object
     In the deleteAnimal method
     {
         Delete the animal Object in the active arrayList with the chosen index
+    }
+    
+    In the loadData method
+    {
+        Collect the data from the database and save it to the array lists
+    }
+    
+    In the saveData method
+    {
+        Load the data to the database
     }
 }
 ```

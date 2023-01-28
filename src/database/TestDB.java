@@ -10,9 +10,15 @@ public class TestDB
         //Run the SQLit Class
         SQLiteDB db = new SQLiteDB("database.db");
 
-        String[][] array = db.getDataFromTable("Cats");
+        String[][] array = db.getDataFromTable("Dogs");
 
-        db.writeToTable("Cats", array);
+//        for (int i = 0; i < array.length; i++)
+//        {
+//            for (int j = 0; j < array[i].length; j++) {
+//                System.out.println(array[i][j]);
+//            }
+//        }
+        db.writeToTable("Dogs", array);
 
         db.closeDB();
 

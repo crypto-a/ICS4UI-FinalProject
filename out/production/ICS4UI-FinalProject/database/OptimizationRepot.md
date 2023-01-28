@@ -114,4 +114,4 @@ public String[][] getDataFromTable(String tableName)
     }
 ```
 
-> After the optimization in the code the total memory use was 
+> After the optimization in the code the total memory use was 2073504 bytes. Overall, we were able ot save 1488 bytes of memory when reading and writing from amd to the database.

@@ -70,31 +70,24 @@ public class SQLiteDB {
             // Execute a SELECT statement to retrieve data from the table
             ResultSet result = this.statement.executeQuery("SELECT * FROM " + tableName);
 
-            for (int i = 0; i < arrayData.length; i++)
-            {
+            int i = 0;
+            while(result.next()) {
                 String[] singleRow = new String[4];
-
-                for (int j = 0; j < 4; j++)
-                {
+                for (int j = 0; j < 4; j++) {
                     singleRow[j] = result.getString(j + 1);
                 }
-
-                arrayData[i] = singleRow;
+                arrayData[i++] = singleRow;
             }
 
-
-            //Return the array
             return arrayData;
-        }
-        //If error occurred
-        catch (Exception e)
-        {
-            //Print error
-            System.out.println("Error retrieving data from table: " + e.getMessage());
 
+        } catch (Exception e) {
+
+            System.out.println("Error connecting to the database: " + e.getMessage());
             //Return null
             return null;
         }
+
     }
 
     /*****************************************
@@ -107,12 +100,14 @@ public class SQLiteDB {
      ******************************************/
     public void writeToTable (String tableName, String[][] data)
     {
-        /* Delete everything in the database */
-
-        //Delete everything from given table
+        // Delete everything in the table before inserting new data
         try {
+            // create statement
+            Statement statement = this.connection.createStatement();
             // Execute a DELETE statement to delete all data from the table
-            this.statement.executeUpdate("DELETE FROM " + tableName);
+            statement.executeUpdate("DELETE FROM " + tableName);
+
+            statement.close();
         } catch (Exception e)
         {
             System.out.println("Error deleting data from table: " + e.getMessage());
@@ -120,30 +115,28 @@ public class SQLiteDB {
 
         /* Write the new data to the database */
         //Try
-        try {
-            // Loop through the 2D array and add the data to the table
-            for (int row = 0; row < data.length; row++)
-            {
+        try
+        {
 
-                // Use a prepared statement to insert the data into the table to prevent SQL injection attacks
-                PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO " + tableName + " (name, age, type, color) VALUES (?, ?, ?, ?)");
-
-                //Assign values to the statement
+            // Insert new data into the table
+            for (int row = 0; row < data.length; row++) {
+                String insertSQL = "INSERT INTO " + tableName + " (name, age, type, color) VALUES (?, ?, ?, ?)";
+                PreparedStatement preparedStatement = this.connection.prepareStatement(insertSQL);
                 preparedStatement.setString(1, data[row][0]);
                 preparedStatement.setInt(2, Integer.parseInt(data[row][1]));
                 preparedStatement.setString(3, data[row][2]);
                 preparedStatement.setString(4, data[row][3]);
-
-                //Execute the statement
                 preparedStatement.executeUpdate();
+                preparedStatement.close();
             }
         }
         //If error occurs
-        catch (Exception e) {
-            System.out.println("error writing to db");
-            e.printStackTrace();
+        catch (Exception e)
+        {
+            System.out.println("Error writing to db: " + e.getMessage());
         }
     }
+
 
     /*****************************************
      /*Method Name: Run
@@ -164,8 +157,8 @@ public class SQLiteDB {
         }
         catch (Exception e)
         {
-            System.out.println("unable to close db");
-            e.printStackTrace();
+            //Print error
+            System.out.println("Error closing to the database: " + e.getMessage());
         }
     }
 }

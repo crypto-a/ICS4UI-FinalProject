@@ -15,12 +15,15 @@ import Objects.Dog.Dog;
 import Objects.Cat.Cat;
 import Objects.Fish.Fish;
 import Objects.Base.Animal;
+import database.SQLiteDB;
+
 import java.util.*;
 
 public class ObjectManager
 {
     //Initialize the properties of the object
     private ArrayList animals = new ArrayList();
+    private SQLiteDB dataBase;
 
     private Event event;
 
@@ -42,6 +45,7 @@ public class ObjectManager
 
         //Set the value for the event Object
         this.event = event;
+        this.dataBase = new SQLiteDB("database.db");
 
 
         //Put the address of the files in the lists
@@ -49,26 +53,8 @@ public class ObjectManager
         this.animals.add(cats);
         this.animals.add(Fish);
 
-        //Add multiple type of dogs to the array list
-        dogs.add(new Dog("Barkley", 3, "Golden Retriever", "Golden"));
-        dogs.add(new Dog("Rufus", 5, "Shih Tzu", "Brown and White"));
-        dogs.add(new Dog("Daisy", 2, "Beagle", "Tri-colored"));
-        dogs.add(new Dog("Max", 4, "Labrador Retriever", "Black"));
-        dogs.add(new Dog("Lola", 6, "Pomeranian", "Orange"));
-
-        //Add multiple types of cats to the array list
-        cats.add(new Cat("Whiskers", 2, "Siamese", "Gray"));
-        cats.add(new Cat("Socks", 4, "Tabby", "White and Brown"));
-        cats.add(new Cat("Mittens", 6, "Persian", "White"));
-        cats.add(new Cat("Bella", 1, "Sphynx", "Hairless"));
-        cats.add(new Cat("Oliver", 3, "Maine Coon", "Orange"));
-
-        //Add multiple types of Fish to the array list
-        Fish.add(new Fish("Nemo", 1, "Clownfish", "Orange"));
-        Fish.add(new Fish("Dory", 2, "Tang", "Blue and Yellow"));
-        Fish.add(new Fish("Bubbles", 3, "Goldfish", "Gold"));
-        Fish.add(new Fish("Gill", 4, "Angelfish", "Black and White"));
-        Fish.add(new Fish("Jacques", 5, "Cleaner Shrimp", "Brown"));
+        //Load the data to the array lists
+        loadData();
     }
 
     /*****************************************
@@ -199,5 +185,150 @@ public class ObjectManager
         //Remove the selected object from it
         animal.remove(deletedAnimal - 1);
 
+    }
+
+    /*****************************************
+     /*Method Name: loadData
+     /*Programmer Name: Ali Rahbar
+     /*Method Date: January 28, 2023
+     /*Method Description: This method loads teh data from the database
+     /*Method Inputs: None
+     /*Method Outputs: None
+     ******************************************/
+    public void loadData()
+    {
+        /* Load dogs */
+
+        //Collect the array list
+        ArrayList<Dog> dogs = (ArrayList<Dog>) this.animals.get(0);
+
+        //Call the data from the database
+        String[][] dataDogs = this.dataBase.getDataFromTable("Dogs");
+
+        //Loop through the list
+        for (int i = 0; i < dataDogs.length; i++)
+        {
+            //Add the object to the arraylist
+            dogs.add(new Dog(dataDogs[i][0], Integer.parseInt(dataDogs[i][1]), dataDogs[i][2], dataDogs[i][3]));
+        }
+
+        /* Load cats */
+
+        //Collect the array list
+        ArrayList<Cat> cats = (ArrayList<Cat>) this.animals.get(1);
+
+        //Call the data from the database
+        String[][] dataCats = this.dataBase.getDataFromTable("Cats");
+
+        //Loop through the list
+        for (int i = 0; i < dataCats.length; i++)
+        {
+            //Add the object to the arraylist
+            cats.add(new Cat(dataCats[i][0], Integer.parseInt(dataCats[i][1]), dataCats[i][2], dataCats[i][3]));
+        }
+
+        /* Load fish */
+
+        //Collect the array list
+        ArrayList<Fish> fish = (ArrayList<Fish>) this.animals.get(2);
+
+        //Call the data from the database
+        String[][] dataFish = this.dataBase.getDataFromTable("Fish");
+
+        //Loop through the list
+        for (int i = 0; i < dataFish.length; i++)
+        {
+            //Add the object to the arraylist
+            fish.add(new Fish(dataFish[i][0], Integer.parseInt(dataFish[i][1]), dataFish[i][2], dataFish[i][3]));
+        }
+    }
+
+    /*****************************************
+     /*Method Name: saveData
+     /*Programmer Name: Ali Rahbar
+     /*Method Date: January 28, 2023
+     /*Method Description: This method loads teh data to the database
+     /*Method Inputs: None
+     /*Method Outputs: None
+     ******************************************/
+    public void saveData()
+    {
+        /* save dogs */
+
+        //Collect the array list
+        ArrayList<Dog> dogs = (ArrayList<Dog>) this.animals.get(0);
+
+        //Construct the 2d array
+        String[][] dogArray = new String[dogs.size()][4];
+
+        //Only if the list is not empty
+        if (dogs.size() != 0)
+        {
+            //Loop through every element in the dogs arraylist
+            for (int i = 0; i < dogs.size(); i++)
+            {
+
+
+                //Add the properties to the arrayList
+                dogArray[i] = new String[] {dogs.get(i).getName(), Integer.toString(dogs.get(i).getAge()), dogs.get(i).getType(), dogs.get(i).getColor()};
+            }
+
+        }
+
+        //Save the arrays to the database
+        this.dataBase.writeToTable("Dogs", dogArray);
+
+
+        /* save cats */
+
+        //Collect the array list
+        ArrayList<Cat> cats = (ArrayList<Cat>) this.animals.get(1);
+
+        //Construct the 2d array
+        String[][] catArray = new String[cats.size()][4];
+
+        //Only if the list is not empty
+        if (cats.size() != 0)
+        {
+            //Loop through every element in the dogs arraylist
+            for (int i = 0; i < cats.size(); i++)
+            {
+
+
+                //Add the properties to the arrayList
+                catArray[i] = new String[] {cats.get(i).getName(), Integer.toString(cats.get(i).getAge()), cats.get(i).getType(), cats.get(i).getColor()};
+            }
+
+        }
+
+        this.dataBase.writeToTable("Cats", catArray);
+
+        /* save Fish */
+
+        //Collect the array list
+        ArrayList<Fish> fish = (ArrayList<Fish>) this.animals.get(2);
+
+        //Construct the 2d array
+        String[][] fishArray = new String[fish.size()][4];
+
+        //Only if the list is not empty
+        if (fish.size() != 0)
+        {
+            //Loop through every element in the dogs arraylist
+            for (int i = 0; i < fish.size(); i++)
+            {
+
+
+                //Add the properties to the arrayList
+                fishArray[i] = new String[] {fish.get(i).getName(), Integer.toString(fish.get(i).getAge()), fish.get(i).getType(), fish.get(i).getColor()};
+            }
+
+        }
+
+        this.dataBase.writeToTable("Fish", fishArray);
+
+
+        //Disconnect the database
+        this.dataBase.closeDB();
     }
 }

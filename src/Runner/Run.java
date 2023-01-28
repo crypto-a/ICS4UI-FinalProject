@@ -42,8 +42,8 @@ public class Run
 
         //Initialize the GUI object
         int[] frameSize = {800, 600};
-        this.mainGui = new GUI("GUI Assessment", frameSize, this.event);
-        this.mainGui.updateMainPage(this.objectManager);
+        this.mainGui = new GUI("GUI Assessment", frameSize, this.event, this.objectManager);
+        this.mainGui.updateMainPage();
 
         //Loop forever
         while (true)
@@ -148,7 +148,7 @@ public class Run
         if (!(eventCode.equals("null")))
         {
             //Update GUI main page
-            this.mainGui.updateMainPage(this.objectManager);
+            this.mainGui.updateMainPage();
         }
     }
 
@@ -165,13 +165,13 @@ public class Run
     {
         //Create the page to collect User Input
         int[] addFrameSize = {300, 250};
-        GUI addPage = new GUI("Add Animal", addFrameSize, this.event);
+        GUI addPage = new GUI("Add Animal", addFrameSize, this.event, this.objectManager);
 
         //reset the input variables for new input
         this.event.resetInput();
 
         //Update the add animal page to show content
-        addPage.updateAddPage(this.objectManager);
+        addPage.updateAddPage();
 
         //Wait for the page to get submitted
         while (this.event.getEvent() != "7")
@@ -236,13 +236,13 @@ public class Run
 
         //Create the page to collect User Input
         int[] editFrameSize = {300, 250};
-        GUI editPage = new GUI("Edit Animal", editFrameSize, this.event);
+        GUI editPage = new GUI("Edit Animal", editFrameSize, this.event, this.objectManager);
 
         //reset the input variables for new input
         this.event.resetInput();
 
         //Update page to show the GUI
-        editPage.updateEditPage(this.objectManager);
+        editPage.updateEditPage();
 
         //Wait for the page to get submitted
         while (this.event.getEvent() != "7")

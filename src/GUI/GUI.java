@@ -31,6 +31,8 @@ public class GUI extends JFrame
 
     private Event event;
 
+    private ObjectManager objectManager;
+
     /*****************************************
      /*Method Name: GUI
      /*Programmer Name: Ali Rahbar
@@ -39,12 +41,13 @@ public class GUI extends JFrame
      /*Method Inputs: title, frameSize, event
      /*Method Outputs: None
      ******************************************/
-    public GUI(String title, int[] frameSize, Event event)
+    public GUI(String title, int[] frameSize, Event event, ObjectManager objectManager)
     {
         //Set the values to the properties
         this.title = title;
         this.frameSize = frameSize;
         this.event = event;
+        this.objectManager = objectManager;
 
         // Initializes the frame and puts "Window Name" in the top bar
         this.frame = new JFrame(this.title);
@@ -65,16 +68,25 @@ public class GUI extends JFrame
      /*Programmer Name: Ali Rahbar
      /*Method Date: January 18, 2023
      /*Method Description: This method constructs the object
-     /*Method Inputs: objectManager
+     /*Method Inputs: None
      /*Method Outputs: None
      ******************************************/
-    public void updateMainPage(ObjectManager objectManager)
+    public void updateMainPage()
     {
         //Set a closing operation for page
-        this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+
+        //Add an event listener for the closing of page
+        this.frame.addWindowListener(new WindowAdapter()
+        {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                closeMainProgram();
+            }
+        });
 
         //Create the GUI object
-        MainPage mainPage = new MainPage(objectManager, this.event);
+        MainPage mainPage = new MainPage(this.objectManager, this.event);
 
         //Clear the frame
         this.frame.getContentPane().removeAll();
@@ -91,10 +103,10 @@ public class GUI extends JFrame
      /*Programmer Name: Ali Rahbar
      /*Method Date: January 18, 2023
      /*Method Description: This method updates the content in the addPage
-     /*Method Inputs: objectManager
+     /*Method Inputs: None
      /*Method Outputs: None
      ******************************************/
-    public void updateAddPage(ObjectManager objectManager)
+    public void updateAddPage()
     {
 
         //Set a closing operation for page
@@ -126,7 +138,7 @@ public class GUI extends JFrame
      /*Method Inputs: objectManger
      /*Method Outputs: None
      ******************************************/
-    public void updateEditPage(ObjectManager objectManager)
+    public void updateEditPage()
     {
         //Set a closing operation for page
         this.frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -141,7 +153,7 @@ public class GUI extends JFrame
         });
 
         //Pull out the animal that will be edited
-        Animal animal = (Animal) objectManager.pullData().get(this.event.rowSelected()-1);
+        Animal animal = (Animal) this.objectManager.pullData().get(this.event.rowSelected()-1);
 
         //Create the GUI object
         EditAnimalPage editPage = new EditAnimalPage(this.event);
@@ -179,6 +191,18 @@ public class GUI extends JFrame
     {
         //End event
         this.event.endEvent();
+    }
+
+    private void closeMainProgram()
+    {
+        //Save data to the database
+        this.objectManager.saveData();
+
+        //Dispose frame
+        terminate();
+
+        //End program
+        System.exit(0);
     }
 
 }
