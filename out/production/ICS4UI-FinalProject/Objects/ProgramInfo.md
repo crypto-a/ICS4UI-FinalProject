@@ -35,6 +35,7 @@ Create an ObjectManager object
     {
         1. animals ArrayList
         2. Event event
+        3. Database object
     }
     In the ObjectManager method
     {
@@ -42,7 +43,7 @@ Create an ObjectManager object
         
         Add them to a list and save the list as the object property
         
-        Create new default values for each of the objects and add them to their arraylists
+        call the loadData method
     }
     
     In the pullData method

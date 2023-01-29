@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ICS4UI-FinalProject:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ICS4UI_FinalProject_jar</output-path>
+    <root id="archive" name="ICS4UI-FinalProject.jar">
+      <element id="module-output" name="ICS4UI-FinalProject" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../../../SQLIte/sqlite-jdbc-3.40.0.0.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
