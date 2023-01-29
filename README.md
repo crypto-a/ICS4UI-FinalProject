@@ -72,3 +72,9 @@ MyProject
 +--- project management plan.
 
 ```
+
+# Steps to Run Code
+1. clone the project
+2. Download the ```JDBC driver``` for the database connection
+3. Add the driver to the Java compiler
+4. Run the code using the ```Main.java``` script
