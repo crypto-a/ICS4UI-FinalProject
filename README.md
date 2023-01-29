@@ -1,6 +1,10 @@
 # ICS4UI-FinalProject
 > Explanaition
 
+# Results screenShot:
+![resultScreenShot](https://user-images.githubusercontent.com/72822222/215298156-1c3c02b2-699c-4ad6-be39-46cec38dfe92.png)
+
+
 # Folder structure:
 ```lua
 MyProject
@@ -78,3 +82,5 @@ MyProject
 2. Download the ```JDBC driver``` for the database connection
 3. Add the driver to the Java compiler
 4. Run the code using the ```Main.java``` script
+
+
