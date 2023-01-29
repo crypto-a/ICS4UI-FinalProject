@@ -1,5 +1,5 @@
 # ICS4UI-FinalProject
-> Explanaition
+> The project is an inventory management system designed for pet shops. It allows users to easily add, edit, and delete animals from the inventory, including dogs, cats, and fish. The software also includes sorting options, allowing users to sort the animals by their name or age. Additionally, the software utilizes a database to store the data, ensuring that information is not lost when the software is closed. With this software, pet shop owners and managers can easily keep track of their inventory and ensure that their customers have access to the animals they need.
 
 # Results screenShot:
 ![resultScreenShot](https://user-images.githubusercontent.com/72822222/215298156-1c3c02b2-699c-4ad6-be39-46cec38dfe92.png)
