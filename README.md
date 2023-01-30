@@ -72,8 +72,7 @@ MyProject
 |         +--- Run.java
 |
 +--- database.db
-|
-+--- project management plan.
+
 
 ```
 
