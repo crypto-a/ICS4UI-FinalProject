@@ -86,31 +86,38 @@ public String[][] getDataFromTable(String tableName)
             // Execute a SELECT statement to retrieve data from the table
             ResultSet result = this.statement.executeQuery("SELECT * FROM " + tableName);
 
-            for (int i = 0; i < arrayData.length; i++)
+            //Create a variable to count the index of the array Data in filling order
+            int i = 0;
+
+            //While there is data to write
+            while(result.next())
             {
+                //Create a temporary array
                 String[] singleRow = new String[4];
 
+                //For every column(4 times)
                 for (int j = 0; j < 4; j++)
                 {
+                    //Add teh data as a string to the array
                     singleRow[j] = result.getString(j + 1);
                 }
 
-                arrayData[i] = singleRow;
+                //Add the array to the 2dArray and increment the index
+                arrayData[i++] = singleRow;
             }
 
-
-            //Return the array
+            //Return the arrayData
             return arrayData;
-        }
-        //If error occurred
-        catch (Exception e)
+
+        } catch (Exception e)
         {
             //Print error
-            System.out.println("Error retrieving data from table: " + e.getMessage());
+            System.out.println("Error connecting to the database: " + e.getMessage());
 
             //Return null
             return null;
         }
+
     }
 ```
 

@@ -70,20 +70,34 @@ public class SQLiteDB {
             // Execute a SELECT statement to retrieve data from the table
             ResultSet result = this.statement.executeQuery("SELECT * FROM " + tableName);
 
+            //Create a variable to count the index of the array Data in filling order
             int i = 0;
-            while(result.next()) {
+
+            //While there is data to write
+            while(result.next())
+            {
+                //Create a temporary array
                 String[] singleRow = new String[4];
-                for (int j = 0; j < 4; j++) {
+
+                //For every column(4 times)
+                for (int j = 0; j < 4; j++)
+                {
+                    //Add teh data as a string to the array
                     singleRow[j] = result.getString(j + 1);
                 }
+
+                //Add the array to the 2dArray and increment the index
                 arrayData[i++] = singleRow;
             }
 
+            //Return the arrayData
             return arrayData;
 
-        } catch (Exception e) {
-
+        } catch (Exception e)
+        {
+            //Print error
             System.out.println("Error connecting to the database: " + e.getMessage());
+
             //Return null
             return null;
         }
