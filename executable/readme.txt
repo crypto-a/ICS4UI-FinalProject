@@ -1,0 +1,1 @@
+The .exe file and the database.db file must be in the same directory before running the program.
